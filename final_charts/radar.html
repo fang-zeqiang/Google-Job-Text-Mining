@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+   <head>
+       <meta charset="utf-8">
+   </head>
+   <body style="width:1200px;height:600px;">
+       <div id="container" style="height: 100%"></div>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-gl/dist/echarts-gl.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-stat/dist/ecStat.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/dataTool.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/china.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/world.js"></script>
+       <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=xfhhaTThl11qYVrqLZii6w8qE5ggnhrY&__ec_v__=20190126"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/bmap.min.js"></script>
+       <script type="text/javascript">
+var dom = document.getElementById("container");
+var myChart = echarts.init(dom);
+var app = {};
+option = null;
+option = {
+    title: {
+        text: '个人职业规划能力偏向',
+        subtext:'以单个用户为例子',
+        textStyle:{fontSize:30},
+        subtextStyle:{fontSize:20}
+    },
+    tooltip: {},
+    toolbox:{
+        show:true,
+        orient:"vertical",
+        feature:{
+            saveAsImage:{
+                show:true,
+            },
+            restore:{
+                show:true
+            },
+            dataView:{
+                show:true
+            }
+        }
+    },
+    legend: {
+        data: ['第一次输入推荐器', '第二次输入推荐器'],
+        textStyle:{
+            fontSize:20
+        },
+        orient:'textVertical',
+        right:'right'
+    },
+    radar: {
+        // shape: 'circle',
+        name: {
+            textStyle: {
+                color: '#fff',
+                backgroundColor: '#999',
+                borderRadius: 3,
+                padding: [3, 5],
+                fontSize:30
+            }
+        },
+        indicator: [
+            { name: '口头语言', max: 5},
+            { name: '原创性', max: 5},
+            { name: '问题敏感度', max: 5},
+            { name: '逻辑思维', max: 5},
+            { name: '数学能力', max: 5},
+            { name: '人际沟通', max: 5}
+        ]
+    },
+    series: [{
+        name: '预算 vs 开销（Budget vs spending）',
+        type: 'radar',
+        // areaStyle: {normal: {}},
+        data: [
+            {
+                value: [4,3, 3, 2, 5, 4],
+                name: '第一次输入推荐器'
+            },
+            {
+                value: [4, 5, 5, 5, 3, 3],
+                name: '第二次输入推荐器'
+            }
+        ]
+    }]
+};;
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+       </script>
+   </body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+   <head>
+       <meta charset="utf-8">
+   </head>
+   <body style="width:1200px;height:600px;">
+       <div id="container" style="height: 100%"></div>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-gl/dist/echarts-gl.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-stat/dist/ecStat.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/dataTool.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/china.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/world.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/bmap.min.js"></script>
+       <script type="text/javascript">
+var dom = document.getElementById("container");
+var myChart = echarts.init(dom);
+var app = {};
+option = null;
+option = {
+    title: {
+        text: '职业规划方向所需技能',
+        left: 'center',
+        textStyle:{
+            fontSize:30
+        },
+        subtextStyle:{
+            fontSize:25
+        }
+    },
+    toolbox:{
+        show:true,
+        orient:"vertical",
+        feature:{
+            saveAsImage:{
+                show:true,
+            },
+            restore:{
+                show:true
+            },
+            dataView:{
+                show:true
+            }
+        }
+        
+    },
+    series: {
+        type: 'sankey',
+        layout: 'none',
+        focusNodeAdjacency: 'allEdges',
+        data: [
+            {'name': 'Java软件开发'}, {'name': '前端技术'}, {'name': '移动端技术'},
+            {'name': '自然语言处理'}, {'name': 'Python数据分析'}, {'name': '数据可视化'},
+            {'name': '量化交易'},{'name': '算法工程'},{'name': '算法优化'},
+            {'name': '机器学习开发'},{'name': '运维工程'},{'name': '云计算开发'},
+            {'name': '软件UI设计'},{'name': '计算机视觉'},{'name': '产品经理'},{'name': '深度学习'}
+        ],
+        links:  [
+            {'source': 'Java软件开发', 'target': '前端技术', 'value': 5},
+            {'source': '前端技术', 'target': '移动端技术', 'value': 12},
+            {'source': 'Python数据分析', 'target': '自然语言处理', 'value': 10},
+            {'source': 'Python数据分析', 'target': '数据可视化', 'value': 8},
+            {'source': '自然语言处理', 'target': '算法工程', 'value': 15},
+            {'source': '算法工程', 'target': '算法优化', 'value': 15},
+            {'source': '自然语言处理', 'target': '算法优化', 'value': 30},
+            {'source': '量化交易', 'target': '算法优化', 'value': 10},
+            {'source': '自然语言处理', 'target': '移动端技术', 'value': 14},
+            {'source': '机器学习开发', 'target': '自然语言处理', 'value': 14},
+            {'source': '机器学习开发', 'target': '算法工程', 'value': 20},
+            {'source': '软件UI设计', 'target': '移动端技术', 'value': 15},
+            {'source': '深度学习', 'target': '计算机视觉', 'value': 12},
+            {'source': '计算机视觉', 'target': '算法优化', 'value': 10},
+            {'source': '运维工程', 'target': '云计算开发', 'value': 15},
+            {'source': '前端技术', 'target': '云计算开发', 'value': 20},
+            {'source': '云计算开发', 'target': '产品经理', 'value': 3},
+            {'source': '移动端技术', 'target': '产品经理', 'value': 10},
+            {'source': '算法优化', 'target': '产品经理', 'value': 7},
+            {'source': '计算机视觉', 'target': '产品经理', 'value': 6},
+            {'source': '数据可视化', 'target': '产品经理', 'value': 5},
+        ],
+        label:{
+            fontSize:20
+        }
+    }
+};
+;
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+       </script>
+   </body>
+</html>
